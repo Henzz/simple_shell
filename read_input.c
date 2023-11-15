@@ -22,7 +22,7 @@ int read_input(char *str)
 	if (nchars_read == -1)
 		exit(0);
 
-	if (nchars_read > 1)
+	if (nchars_read > 0)
 	{
 		strcpy(str, buffer);
 		return (0);
