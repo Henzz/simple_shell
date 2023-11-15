@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include "main.h"
 /**
  * read_input - Reads input from input stream.
  * @str: string to copy the command read to.
@@ -20,7 +21,7 @@ int read_input(char *str)
 	nchars_read = getline(&buffer, &buffersize, stdin);
 	/* Check if the getline failed or reached EOF or if user used CTRL+D */
 	if (nchars_read == -1)
-		exit(EXIT_FAILURE);
+		return (-1);
 
 	if (nchars_read > 1)
 	{

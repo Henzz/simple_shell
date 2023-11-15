@@ -31,19 +31,21 @@ int calc_ntokens(char *cmd_copy)
  * main - executes a command passed.
  * Return: 0 on success, -1 of failure.
  */
-int main()
+int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av)
 {
 	char **cmdArgv;
 	char cmd[MAX_BUFFER_LENGTH], cmd_copy[MAX_BUFFER_LENGTH];
 	int n_tokens, cmdread;
 
-	while (1)
-	{
-		display_prompt();
+	do {
+		if (isatty(STDIN_FILENO))
+			display_prompt();
 		n_tokens = 0;
 		cmdread = 0;
 		/* Read input stream */
 		cmdread = read_input(cmd);
+		if (cmdread == -1)
+			exit(EXIT_FAILURE);
 		if (cmdread == 1)
 			continue;
 		/* Make a copy of the command */
@@ -63,7 +65,7 @@ int main()
 		/* tokenize cmd */
 		tokenize_cmd(cmd, cmdArgv);
 		exec_cmd(cmdArgv);
-	}
+	} while (1);
 	/* Free the dynamically allocated memory */
 	free(cmdArgv);
 	return (0);
