@@ -1,6 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+/* Environment variable */
+extern char **environ;
 /* Maximum number of letters allowed */
 #define MAX_BUFFER_LENGTH 1024
 /* Maximum number of arguments allowed */
@@ -24,5 +26,7 @@ void exec_cmd(char **argv);
 int helper_cmd(char *cmd);
 /* Initialize each element to NULL and store each token in the cmdArgv array */
 void tokenize_cmd(char *cmd, char **cmd_argv);
+/* handles excve error */
+void handle_error(const char *message);
 
 #endif /* MAIN_H */

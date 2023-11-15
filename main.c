@@ -31,7 +31,7 @@ int calc_ntokens(char *cmd_copy)
  * main - executes a command passed.
  * Return: 0 on success, -1 of failure.
  */
-int main(void)
+int main()
 {
 	char **cmdArgv;
 	char cmd[MAX_BUFFER_LENGTH], cmd_copy[MAX_BUFFER_LENGTH];

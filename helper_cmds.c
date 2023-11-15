@@ -13,8 +13,8 @@ int helper_cmd(char *cmd)
 	int n_cmds = 2, i, switch_arg = 0;
 	char *cmd_lists[2];
 
-	cmd_lists[0] = "clear\n";
-	cmd_lists[1] = "exit\n";
+	cmd_lists[0] = "clear";
+	cmd_lists[1] = "exit";
 	for (i = 0; i < n_cmds; i++)
 	{
 		if (strcmp(cmd, cmd_lists[i]) == 0)

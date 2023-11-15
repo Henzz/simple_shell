@@ -15,10 +15,6 @@ char *tokenize_path(char *path, char *cmd)
 	int cmd_length, path_length;
 	struct stat buffer;
 
-	/* Remove the newline character from the user input */
-	/* if (cmd[strlen(cmd) - 1 == '\n']) */
-	/*	cmd[strlen(cmd) - 1] = '\0'; */
-
 	/* Get the length of the cmd */
 	cmd_length = strlen(cmd);
 	/* Let's break down the path and get all the directories available */

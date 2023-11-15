@@ -20,10 +20,14 @@ int read_input(char *str)
 	nchars_read = getline(&buffer, &buffersize, stdin);
 	/* Check if the getline failed or reached EOF or if user used CTRL+D */
 	if (nchars_read == -1)
-		exit(0);
+		exit(EXIT_FAILURE);
 
-	if (nchars_read > 0)
+	if (nchars_read > 1)
 	{
+		/* Remove trailing new line character */
+		if (buffer[nchars_read - 1] == '\n')
+			buffer[nchars_read - 1] = '\0';
+
 		strcpy(str, buffer);
 		return (0);
 	}
