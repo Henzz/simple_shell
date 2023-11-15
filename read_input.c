@@ -20,12 +20,9 @@ int read_input(char *str)
 	nchars_read = getline(&buffer, &buffersize, stdin);
 	/* Check if the getline failed or reached EOF or if user used CTRL+D */
 	if (nchars_read == -1)
-	{
-		dprintf(STDOUT_FILENO, "\nExiting shell...\n");
 		exit(0);
-	}
 
-	if (nchars_read > 0)
+	if (nchars_read > 1)
 	{
 		strcpy(str, buffer);
 		return (0);

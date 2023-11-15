@@ -10,8 +10,8 @@
 
 /* Greeting message during startup */
 void init_shell(void);
-/* Prints current working directory with $ */
-void print_dir(void);
+/* Displays prompt */
+void display_prompt(void);
 /* Reads users input */
 int read_input(char *str);
 /* Fetches actual path of a command */

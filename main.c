@@ -37,13 +37,11 @@ int main(void)
 	char cmd[MAX_BUFFER_LENGTH], cmd_copy[MAX_BUFFER_LENGTH];
 	int n_tokens, cmdread;
 
-	/* Greetings */
-	init_shell();
 	while (1)
 	{
+		display_prompt();
 		n_tokens = 0;
 		cmdread = 0;
-		print_dir();
 		/* Read input stream */
 		cmdread = read_input(cmd);
 		if (cmdread == 1)

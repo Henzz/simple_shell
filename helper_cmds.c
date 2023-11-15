@@ -30,7 +30,6 @@ int helper_cmd(char *cmd)
 			clear();
 			return (1);
 		case 2:
-			dprintf(STDOUT_FILENO, "Exiting shell...\n");
 			exit(0);
 		default:
 			break;

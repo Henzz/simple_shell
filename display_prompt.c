@@ -1,10 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 /**
- * print_dir - Prints the current working directory
+ * display_prompt - Prints the current working directory
  * with $ at the end.
  */
-void print_dir(void)
+void display_prompt(void)
 {
 	/*
 	 * char *username = getenv("USER");
