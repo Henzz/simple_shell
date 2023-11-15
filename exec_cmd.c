@@ -4,6 +4,7 @@
 #include <sys/types.h>
 #include <stdlib.h>
 #include "main.h"
+extern char **environ;
 /**
  * exec_cmd - executes system commands.
  * @argv: array of strings that are commands.
@@ -29,7 +30,7 @@ void exec_cmd(char **argv)
 				exit(0);
 			}
 			/* Execute command */
-			if (execve(argv[0], argv, NULL) == -1)
+			if (execve(argv[0], argv, environ) == -1)
 				dprintf(STDERR_FILENO, "Error executing command..");
 		}
 		else
