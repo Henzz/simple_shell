@@ -15,3 +15,4 @@ void display_prompt(void)
 	 */
 	printf("$ ");
 }
+

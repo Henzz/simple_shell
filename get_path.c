@@ -76,3 +76,4 @@ char *get_path(char *cmd)
 
 	return (actual_path);
 }
+

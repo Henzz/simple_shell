@@ -18,3 +18,4 @@ void init_shell(void)
 	printf("******************************************\n");
 	printf("USER is: @%s\n", username);
 }
+

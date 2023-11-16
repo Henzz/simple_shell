@@ -10,10 +10,12 @@
  */
 void tokenize_cmd(char *cmd, char **cmd_argv)
 {
-	char *token, *delim = " ";
+	char *token, *delim = "\n\t ";
 	int i;
 
 	token = strtok(cmd, delim);
+	if (token == NULL)
+		free(cmd_argv);
 	for (i = 0; token != NULL; i++)
 	{
 		cmd_argv[i] = malloc(sizeof(char) * strlen(token));
@@ -30,3 +32,4 @@ void tokenize_cmd(char *cmd, char **cmd_argv)
 	}
 	cmd_argv[i] = NULL;
 }
+
