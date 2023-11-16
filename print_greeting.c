@@ -1,9 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 /**
- * init_shell - Greetings message during shell startup.
+ * greeting - Greetings message during shell startup.
  */
-void init_shell(void)
+void greeting(void)
 {
 	char *username = getenv("USER");
 
