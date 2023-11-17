@@ -24,7 +24,7 @@ int main(__attribute__((unused)) int ac, char **av)
 		cmd_counter++;
 		buffer = NULL;
 		size = 0;
-		read_input(buffer, size, cmd_counter, av);
+		read_input(&buffer, &size, cmd_counter, av);
 	} while (1);
 
 	return (0);
