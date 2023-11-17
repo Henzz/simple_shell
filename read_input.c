@@ -40,7 +40,8 @@ void read_input(char **buffer, size_t *size, int cmd_counter, char **av)
 		single_free(2, argv, *buffer);
 	}
 	else
-		exit_shell(*buffer);
+		free(buffer);
+		exit_shell(&buffer);
 }
 
 /**
