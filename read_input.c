@@ -8,7 +8,7 @@
  * read_input - Reads input from input stream.
  * @buffer: A pointer to load stream input.
  * @size: A counter for stdin read.
- * @cmd_counter: A counter for keeping track of commands entered.
+ * @cmd_counter: A counter for keeping track of commands entered.read_input.c
  * @av: Name of the program running the shell.
  */
 void read_input(char **buffer, size_t *size, int cmd_counter, char **av)
@@ -41,8 +41,7 @@ void read_input(char **buffer, size_t *size, int cmd_counter, char **av)
 	}
 	else
 	{
-		free(buffer);
-		exit_shell(&buffer);
+		exit_shell(*buffer);
 	}
 }
 
