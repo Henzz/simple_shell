@@ -11,7 +11,7 @@
  * @cmd_counter: A counter for keeping track of commands entered.
  * @av: Name of the program running the shell.
  */
-void read_input(char *buffer, size_t size, int cmd_counter, char **av)
+void read_input(char **buffer, size_t *size, int cmd_counter, char **av)
 {
 	int i, ntoken_count = 0;
 	char **argv;
@@ -25,22 +25,22 @@ void read_input(char *buffer, size_t size, int cmd_counter, char **av)
 	/* Check if the getline failed or reached EOF or if user used CTRL+D */
 	if (nchars_read != -1)
 	{
-		argv = split_cmd(buffer, delim, ntoken_count);
+		argv = split_cmd(*buffer, delim, ntoken_count);
 		if (argv[0] == NULL)
 		{
-			single_free(2, argv, buffer);
+			single_free(2, argv, *buffer);
 			return;
 		}
-		i = helper_cmds(argv, buffer);
+		i = helper_cmds(argv, *buffer);
 		if (i == -1 && argv)
-			fork_child(argv, buffer, cmd_counter, av);
+			fork_child(argv, *buffer, cmd_counter, av);
 		/* Free argv before exit */
 		for (i = 0; argv[i] != NULL; i++)
 			free(argv[i]);
-		single_free(2, argv, buffer);
+		single_free(2, argv, *buffer);
 	}
 	else
-		exit_shell(buffer);
+		exit_shell(*buffer);
 }
 
 /**
