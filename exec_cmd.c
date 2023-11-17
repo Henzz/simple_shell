@@ -13,8 +13,10 @@
  * @buffer: A string containing user input.
  * @cmd_counter: A counter for keeping track of commands entered.
  * @av: Name of the program running the shell.
+ *
+ * Return: On success file path, Otherwise NULL.
  */
-void exec_cmd(char **argv, char *buffer, int cmd_counter, char **av)
+char *exec_cmd(char **argv, char *buffer, int cmd_counter, char **av)
 {
 	int i, check;
 	struct stat buf;
@@ -35,18 +37,12 @@ void exec_cmd(char **argv, char *buffer, int cmd_counter, char **av)
 			for (i = 1; argv[i]; i++)
 				free(argv[i]);
 			free(argv);
-			exit(100);
 		}
 		/* File exists or has full path */
 		cmd = cmd_copy;
+		return (NULL);
 	}
-	argv[0] = cmd;
-	if (argv[0] != NULL)
-	{
-		/* Execute command */
-		if (execve(argv[0], argv, environ) == -1)
-			execve_error(argv[0], cmd_counter, cmd_copy);
-	}
+	return (cmd);
 }
 
 /**
@@ -65,15 +61,21 @@ void fork_child(char **argv, char *buffer, int cmd_counter, char **av)
 	pid_t pid; /* Child process id */
 	int status;
 
-	pid = fork();
-	if (pid == -1)
-		malloc_error("\nFailed forking child");
-	else if (pid == 0)
+	/* check if file path exists and excute */
+	argv[0] = exec_cmd(argv, buffer, cmd_counter, av);
+	if (argv[0] != NULL)
 	{
-		/* check if file path exists and excute */
-		exec_cmd(argv, buffer, cmd_counter, av);
+		pid = fork();
+		if (pid == -1)
+			malloc_error("\nFailed forking child");
+		else if (pid == 0)
+		{
+			/* Execute command */
+			if (execve(argv[0], argv, environ) == -1)
+				execve_error(argv[0], cmd_counter, argv[0]);
+		}
+		else /* If parent wait for child process */
+			wait(&status);
 	}
-	else /* If parent wait for child process */
-		wait(&status);
 }
 
