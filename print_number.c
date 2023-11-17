@@ -1,9 +1,9 @@
-#include "main.h"
+#include "shell.h"
 
 /**
- * print_number - Prints an unsigned number.
- * @n: Unsigned integer to be printed.
- * Return: The amount of numbers printed.
+ * print_number - Prints an unsigned number
+ * @n: unsigned integer to be printed
+ * Return: The amount of numbers printed
  */
 int print_number(int n)
 {
@@ -18,11 +18,10 @@ int print_number(int n)
 		div *= 10;
 	for (; div != 0; )
 	{
-		len += print_char('0' + num / div);
+		len += _write_char('0' + num / div);
 		num %= div;
 		div /= 10;
 	}
 
 	return (len);
 }
-
