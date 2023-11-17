@@ -13,7 +13,7 @@ void cd_b(char *buffer)
 {
 	int index, ntoken_count;
 	char **argv;
-	const char *delim = " \n\t";
+	const char *delim = "\n\t ";
 
 	ntoken_count = 0;
 	argv = split_cmd(buffer, delim, ntoken_count);

@@ -13,11 +13,13 @@
  */
 void read_input(char *buffer, size_t size, int cmd_counter, char **av)
 {
-	int i, ntoken_count = 0;
+	int i, ntoken_count;
 	char **argv;
-	const char *delim = " \n\t";
+	const char *delim = "\n\t ";
 	ssize_t nchars_read;
 
+	ntoken_count = 0;
+	/* If it's in interactive mode */
 	if (isatty(STDIN_FILENO))
 		display_prompt();
 
@@ -96,11 +98,8 @@ int calc_ntokens(char *buffer, const char *delim)
 
 	token = strtok(buffer_cpy, delim);
 	/* Calculate the total number of tokens */
-	while (token != NULL)
-	{
-		n_tokens++;
+	for (n_tokens = 0; token != NULL; n_tokens++)
 		token = strtok(NULL, delim);
-	}
 	free(buffer_cpy);
 
 	return (n_tokens);

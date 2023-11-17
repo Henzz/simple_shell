@@ -16,9 +16,10 @@ char *get_path(char *cmd)
 	char **path_tokens, *file_path;
 	char *actual_path;
 	int index;
+	char *path = "PATH";
 
-	index = get_path_index("PATH");
-	path_tokens = tokenize_path(index, "PATH");
+	index = get_path_index(path);
+	path_tokens = tokenize_path(index, path);
 	/* Check if actual path is found */
 	if (path_tokens == NULL)
 		return (NULL);
