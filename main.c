@@ -19,7 +19,6 @@ int main(__attribute__((unused)) int ac, char **av)
 		greeting();
 
 	cmd_counter = 0;
-	signal(SIGINT, SIG_IGN);
 	do {
 		cmd_counter++;
 		buffer = NULL;
