@@ -129,7 +129,7 @@ char **tokenize_cmd(char *buffer, const char *delim, int ntoken_count)
 	argv = malloc(sizeof(char *) * (ntoken_count + 1));
 	if (argv == NULL)
 	{
-		dprintf(STDERR_FILENO, "Error: Failed to allocate memory for tokenize_cmd\n");
+		dprintf(STDERR_FILENO, "Error: Failed to allocate memory for token_cmd\n");
 		return (NULL);
 	}
 	token = strtok(buffer_cpy, delim);
