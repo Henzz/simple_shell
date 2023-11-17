@@ -21,7 +21,7 @@ void read_input(char **buffer, size_t *size, int cmd_counter, char **av)
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, PROMPT, str_len(PROMPT));
 
-	nchars_read = getline(&buffer, &size, stdin);
+	nchars_read = getline(buffer, size, stdin);
 	/* Check if the getline failed or reached EOF or if user used CTRL+D */
 	if (nchars_read != -1)
 	{
