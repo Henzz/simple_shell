@@ -34,7 +34,7 @@ void display_prompt(void);
 
 /*** Main Functions ***/
 /* Reads users input */
-void read_input(char *buffer, size_t size, int cmd_counter, char **av);
+void read_input(char **buffer, size_t *size, int cmd_counter, char **av);
 /* Splits a buffer in to smaller peaces based on a delimiter */
 char **split_cmd(char *buffer, const char *delim, int ntoken_count);
 /* Calculates the number of tokens */
