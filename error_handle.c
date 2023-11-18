@@ -29,7 +29,7 @@ void execve_error(char *av, int count, char *cmd_copy)
 	error_print(av, count, cmd_copy);
 	print_str(": ", 0);
 	perror("");
-	exit(EXIT_FAILURE);
+	exit(2);
 }
 
 /**

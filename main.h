@@ -45,8 +45,8 @@ char **tokenize_path(int index, char *str);
 char *get_directory(char **path_tokens, char *command);
 /* Build correct file path with command file */
 char *build_path(char *directory, char *cmd);
-/* Fetches correct file path system command */
-char *exec_cmd(char **argv, char *buffer, int cmd_counter, char **av);
+/* Executes a system command */
+void exec_cmd(char **argv, char *buffer, int count, char **av);
 /* Creates a child process and executes a system command */
 void fork_child(char **argv, char *buffer, int cmd_counter, char **av);
 
